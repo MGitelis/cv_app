@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  get 'authors/create'
+
+  get 'authors/update'
+
+  get 'authors/edit'
+
+  get 'authors/destroy'
+
+  get 'authors/index'
+
+  get 'authors/show'
+
   get 'citations/new'
 
   get 'citations/create'

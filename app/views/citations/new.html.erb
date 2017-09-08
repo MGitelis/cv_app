@@ -1,2 +1,49 @@
-<h1>Citations#new</h1>
-<p>Find me in app/views/citations/new.html.erb</p>
+<h1>Add New Citation</h1>
+
+<%= form_for @citation do |f| %>
+
+	<% if @citation.errors.any? %>
+		<% @citation.errors.full_messages.each do |msg| %>
+			<div class="alert alert-danger"><%= msg %></div>
+		<% end %>
+	<% end %>
+		
+	<div class="form-group">
+		<%= f.label :title %><br/>
+		<%= f.text_field :title, class: 'form-control'  %><br/>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :journal %><br/>
+		<%= f.text_field :journal, class: 'form-control'  %><br/>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :year %><br/>
+		<%= f.text_field :year, class: 'form-control'  %><br/>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :volume %><br/>
+		<%= f.number_field :volume, class: 'form-control'  %><br/>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :issue %><br/>
+		<%= f.number_field :issue, class: 'form-control'  %><br/>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :pages %><br/>
+		<%= f.text_field :pages, class: 'form-control'  %><br/>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :doi %><br/>
+		<%= f.text_field :doi, class: 'form-control'  %><br/>
+	</div>
+
+	<%= f.submit "Submit", class: 'btn btn-primary' %>
+	<%= link_to "Cancel", citations_path, class: 'btn btn-default' %>
+
+<% end %>
