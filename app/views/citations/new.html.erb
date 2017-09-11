@@ -1,6 +1,6 @@
 <h1>Add New Citation</h1>
 
-<%= form_for @citation do |f| %>
+<%= form_for [@citation] do |f| %>
 
 	<% if @citation.errors.any? %>
 		<% @citation.errors.full_messages.each do |msg| %>
@@ -41,6 +41,21 @@
 	<div class="form-group">
 		<%= f.label :doi %><br/>
 		<%= f.text_field :doi, class: 'form-control'  %><br/>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :citation_author_first_name %><br/>
+		<%= f.text_field :citation_author_first_name, class: 'form-control'  %><br/>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :citation.author.middle_name %><br/>
+		<%= f.text_field :author.middle_name, class: 'form-control'  %><br/>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :citation.author.last_name %><br/>
+		<%= f.text_field :author.last_name, class: 'form-control'  %><br/>
 	</div>
 
 	<%= f.submit "Submit", class: 'btn btn-primary' %>

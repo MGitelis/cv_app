@@ -1,0 +1,41 @@
+<header>
+	<div class="row">
+	  <div class="col d-flex justify-content-center">
+	    <h1>Matthew E. Gitelis, B.S.</h1>
+	  </div>
+	</div>
+	<div class="row">
+	  <div class="col d-flex justify-content-center">
+	    <h6>1148 W. Grand Ave. Unit #2, Chicago, IL 60642</h6>
+	  </div>
+	</div>
+	<div class="row">
+	  <div class="col d-flex justify-content-center">
+	    <h6>Cell: (630) 290-8670 | Email: <%= mail_to 'matthew.gitelis@gmail.com' %></h6>
+	  </div>
+	</div>	
+</header>
+<section class='row'>
+	<div class="col">
+		<h3>Education</h3>
+			<article>
+				Rush Medical College
+			</article>
+		</div>
+</section>
+<section class='row'>
+	<div class="col">
+		<h3>Peer-Reviewed Publications</h3>
+			<article>
+				<% if @citations.blank? %>
+					<p>You don't have any citations.</p>
+				<% else %>
+					<ol>
+					  <% @citations.each do |c| %>
+					  <li><%= c.title %></li>
+	 					<% end %>
+					</ol>
+					<% end %>
+			</article>
+		</div>
+</section>
