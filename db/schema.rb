@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170911144954) do
+ActiveRecord::Schema.define(version: 20170911145342) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "authors", force: :cascade do |t|
+    t.string "first_name"
+    t.string "middle_name"
+    t.string "last_name"
+    t.bigint "citation_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["citation_id"], name: "index_authors_on_citation_id"
+  end
 
   create_table "citations", force: :cascade do |t|
     t.integer "year"
@@ -27,4 +37,5 @@ ActiveRecord::Schema.define(version: 20170911144954) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "authors", "citations"
 end

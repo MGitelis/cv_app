@@ -1,2 +1,16 @@
-<h1>Citations#show</h1>
-<p>Find me in app/views/citations/show.html.erb</p>
+<p>
+  <strong>Name:</strong>
+  <%=h @citation.title %>
+</p>
+
+<ol>
+  <% for author in @citation.authors %>
+  <li><%= h author.first_name %></li>
+  <% end %>
+</ol>
+
+<p>
+  <%= link_to "Edit", edit_citation_path(@citation) %> |
+  <%= link_to "Destroy", @citation, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", citations_path %>
+</p>

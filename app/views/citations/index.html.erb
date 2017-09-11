@@ -1,2 +1,10 @@
-<h1>Citations#index</h1>
-<p>Find me in app/views/citations/index.html.erb</p>
+<ol>
+	<% @citations.each do |citation| %>
+	  <li><% citation.authors.each do |author| %>
+	  	<%= author.first_name %>
+	  	<%= author.middle_name %>
+	  	<%= author.last_name %>
+	  <% end %>
+	  <%= citation.title %></li>
+	<% end %>
+</ol>

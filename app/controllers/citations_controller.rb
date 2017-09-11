@@ -1,7 +1,11 @@
 class CitationsController < ApplicationController
+  def index
+    @citations = Citation.includes(:authors)
+  end
+
   def new
     @citation = Citation.new
-    @author = Author.new
+    1.times { @citation.authors.build }
   end
 
   def create
@@ -16,22 +20,28 @@ class CitationsController < ApplicationController
   end
 
   def update
+    @citation = Citation.find(params[:id])
+
+    if @citation.update(params[:citation])
+      redirect_to @citation
+    else
+      render :action => 'edit'
+    end
   end
 
   def edit
+    @citation = Citation.find(params[:id])
   end
 
   def destroy
   end
 
-  def index
-  end
-
   def show
+    @citation = Citation.find(params[:id])
   end
 
   private
     def citation_params
-      params.require(:citation).permit(:year, :title, :journal, :volume, :issue, :pages, :doi, :author_id)
+      params.require(:citation).permit(:year, :title, :journal, :volume, :issue, :pages, :doi, authors_attributes: [ :first_name, :middle_name, :last_name ])
     end
 end
