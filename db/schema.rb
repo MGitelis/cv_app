@@ -10,9 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170909155043) do
+ActiveRecord::Schema.define(version: 20170911144954) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "citations", force: :cascade do |t|
+    t.integer "year"
+    t.string "title"
+    t.string "journal"
+    t.integer "volume"
+    t.integer "issue"
+    t.string "pages"
+    t.string "doi"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end
