@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'cv' => 'cv#index'
   resources :citations
 
   resources :citations do

@@ -1,4 +1,6 @@
 class CitationsController < ApplicationController
+  include AuthorsHelper
+
   def index
     @citations = Citation.includes(:authors)
   end
@@ -22,10 +24,10 @@ class CitationsController < ApplicationController
   def update
     @citation = Citation.find(params[:id])
 
-    if @citation.update(params[:citation])
+    if @citation.update_attributes(citation_params)
       redirect_to @citation
     else
-      render :action => 'edit'
+      render 'edit'
     end
   end
 

@@ -1,0 +1,12 @@
+<ol>
+  <% @citations.each do |citation| %>
+    <li><% citation.authors.each do |author| %>
+      <%= author.first_name %>
+      <%= author.middle_name %>
+      <%= author.last_name %>
+
+    <% end %>
+    <%= citation.title %></li>
+    <%= link_to "Edit", edit_citation_path(citation) %>
+  <% end %>
+</ol>

@@ -44,8 +44,10 @@
 	</div>
 
 	<h3>Add New Author</h3>
+		<% @count = 0 %>
 
 		<%= f.fields_for :authors do |a| %>
+	    <h5>Author <%= @count += 1 %></h5><br/>
 	    <div class="form-group">
 				<%= a.label :first_name %><br/>
 				<%= a.text_field :first_name, class: 'form-control'  %><br/>

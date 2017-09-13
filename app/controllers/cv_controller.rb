@@ -1,7 +1,5 @@
 class CvController < ApplicationController
   def index
-  	@citations = Citation.all
-  	@authors = Author.all
-  	@citations = citations.authors.build
+  	@citations = Citation.includes(:authors)
   end
 end

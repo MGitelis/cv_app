@@ -27,15 +27,7 @@
 	<div class="col">
 		<h3>Peer-Reviewed Publications</h3>
 			<article>
-				<% if @citations.blank? %>
-					<p>You don't have any citations.</p>
-				<% else %>
-					<ol>
-					  <% @citations.each do |c| %>
-					  <li><%= c.title %></li>
-	 					<% end %>
-					</ol>
-					<% end %>
+				<%= render 'layouts/citations' %>
 			</article>
 		</div>
 </section>
