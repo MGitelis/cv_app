@@ -1,12 +1,16 @@
-<ol>
-  <% @citations.each do |citation| %>
-    <li><% citation.authors.each do |author| %>
-      <%= author.first_name %>
-      <%= author.middle_name %>
-      <%= author.last_name %>
+<h3>Peer-Reviewed Publications</h3>
+  <article>
+    <ol>
+      <% @citations.each do |citation| %>
+        <li><% citation.authors.each do |author| %>
+          <%= author.first_name %>
+          <%= author.middle_name %>
+          <%= author.last_name %>
 
-    <% end %>
-    <%= citation.title %></li>
-    <%= link_to "Edit", edit_citation_path(citation) %>
-  <% end %>
-</ol>
+        <% end %>
+        <%= citation.title %></li>
+        <%= link_to "Edit", edit_citation_path(citation) %>
+        <%= link_to 'Delete', citation_path(citation), method: :delete, data: {confirm: "Are you sure?"} %>
+      <% end %>
+    </ol>
+  </article>

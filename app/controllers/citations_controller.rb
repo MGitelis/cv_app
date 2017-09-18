@@ -36,6 +36,10 @@ class CitationsController < ApplicationController
   end
 
   def destroy
+    @citation = Citation.find(params[:id])
+    flash[:notice] = "Citation was successfully deleted"
+    @citation.destroy
+    redirect_to citations_path
   end
 
   def show
