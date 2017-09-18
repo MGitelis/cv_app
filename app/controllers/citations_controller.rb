@@ -1,4 +1,5 @@
 class CitationsController < ApplicationController
+  before_action :set_citation, only: [:edit, :update, :show, :destroy]
   include AuthorsHelper
 
   def index
@@ -22,7 +23,6 @@ class CitationsController < ApplicationController
   end
 
   def update
-    @citation = Citation.find(params[:id])
 
     if @citation.update_attributes(citation_params)
       redirect_to @citation
@@ -32,21 +32,22 @@ class CitationsController < ApplicationController
   end
 
   def edit
-    @citation = Citation.find(params[:id])
   end
 
   def destroy
-    @citation = Citation.find(params[:id])
     flash[:notice] = "Citation was successfully deleted"
     @citation.destroy
     redirect_to citations_path
   end
 
   def show
-    @citation = Citation.find(params[:id])
   end
 
   private
+    def set_citation
+      @citation = Citation.find(params[:id])
+    end
+
     def citation_params
       params.require(:citation).permit(:year, :title, :journal, :volume, :issue, :pages, :doi, authors_attributes: [ :first_name, :middle_name, :last_name ])
     end
