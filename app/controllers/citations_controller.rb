@@ -1,5 +1,6 @@
 class CitationsController < ApplicationController
   before_action :set_citation, only: [:edit, :update, :show, :destroy]
+  
   include AuthorsHelper
 
   def index
